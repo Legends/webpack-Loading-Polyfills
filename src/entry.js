@@ -26,10 +26,10 @@ try {
     let king = new King("Robert");
     king.says();
     king.promises().then(()=>{
-        // fetch("http://127.0.0.1:5500/dist/index.html")
-        // .then((result)=>{return result.text();})
-        // .then((txt)=>{console.log(txt);})
-        // .catch((result)=>{console.log(result);});
+        fetch("https://github.com/Legends/webpack-Loading-Polyfills/blob/master/dist/main.js")
+        .then((result)=>{return result.text();})
+        .then((txt)=>{console.log(txt);})
+        .catch((result)=>{console.log(result);});
     });
 } catch (error) {
     console.error(error); 
