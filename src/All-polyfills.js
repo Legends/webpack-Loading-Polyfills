@@ -1,12 +1,12 @@
-// import 'core-js/es6/promise';
+import 'core-js/es6/promise';
 
-if(!"Promise" in window){
-  require.ensure([], () => {
-    require('core-js/es6/promise');  
+// if(!"Promise" in window){
+//   require.ensure([], () => {
+//     require('core-js/es6/promise');  
 
-     resolve();
-   }, 'Promise');
-}
+//      resolve();
+//    }, 'Promise');
+// }
 
 export default (function loadPolyfills() {
   const fillFetch = () => new Promise((resolve) => {
