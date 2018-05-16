@@ -61,6 +61,10 @@ module.exports = {
           loader: 'babel-loader?presets[]=es2015'
         }
       },
+      {
+        test: require.resolve("whatwg-fetch"),
+        use: 'imports-loader?this=>window'
+      }
       // {
       //   test: /\.(css|scss)$/,
       //   use: [{
@@ -96,7 +100,7 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js", ".txt", ".json", ".css", ".less", ".scss", ".saas"],
-    alias:{
+    alias: {
       "jquery": require.resolve("jquery")
     }
   },
