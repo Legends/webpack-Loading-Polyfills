@@ -26,11 +26,13 @@ try {
     let king = new King("Robert");
     king.says();
     king.promises().then(()=>{
+
         fetch("https://github.com/Legends/webpack-Loading-Polyfills/blob/master/dist/main.js")
         .then((result)=>{return result.text();})
         .then((txt)=>{console.log(txt);})
         .catch((result)=>{console.log(result);});
-    });
+        
+    }).catch((e)=>{console.error("King promises error: " + e);});
 } catch (error) {
     console.error(error); 
 }

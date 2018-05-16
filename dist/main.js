@@ -15078,6 +15078,8 @@ try {
         }).catch(function (result) {
             console.log(result);
         });
+    }).catch(function (e) {
+        console.error("King promises error: " + e);
     });
 } catch (error) {
     console.error(error);
