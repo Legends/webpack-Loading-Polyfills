@@ -38,7 +38,7 @@ console.log("stating fetch require ensure....");
   return Promise.all([
     fillFetch(),  
     fillCoreJs()
-  ]);
+  ]).catch((e)=>{console.error(e);});
 })()
 
 // module.exports = (function test() {
