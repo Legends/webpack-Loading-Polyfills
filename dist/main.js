@@ -41,7 +41,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"vendors~core-js":"vendors~core-js"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"vendors~core-js":"vendors~core-js","vendors~fetch":"vendors~fetch"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -14929,8 +14929,8 @@ exports.default = function loadPolyfills() {
     return new Promise(function (resolve) {
       if ('fetch' in window) return resolve();
 
-      Promise.resolve(/*! require.ensure */).then((function () {
-        __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"whatwg-fetch\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+      __webpack_require__.e(/*! require.ensure | fetch */ "vendors~fetch").then((function () {
+        __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
 
         resolve();
       }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);

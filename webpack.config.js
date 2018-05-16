@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require("path");
 debugger;
 // I want to output one vendors.js and one bundle.js and once bundle.css file.
+console.log("whatwg-fetch resolves to: " + require.resolve("whatwg-fetch"));
 
 module.exports = {
 
