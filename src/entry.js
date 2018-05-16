@@ -27,7 +27,7 @@ try {
     king.says();
     king.promises().then(() => {
 
-        fetch("https://github.com/Legends/webpack-Loading-Polyfills/blob/master/dist/main.js")
+        fetch("https://httpbin.org/get")
             .then((result) => {
                 return result.text();
             })

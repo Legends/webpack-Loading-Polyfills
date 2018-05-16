@@ -15071,7 +15071,8 @@ try {
     var king = new King("Robert");
     king.says();
     king.promises().then(function () {
-        fetch("https://github.com/Legends/webpack-Loading-Polyfills/blob/master/dist/main.js").then(function (result) {
+
+        fetch("https://httpbin.org/get").then(function (result) {
             return result.text();
         }).then(function (txt) {
             console.log(txt);
