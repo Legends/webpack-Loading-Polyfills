@@ -1,10 +1,6 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~fetch"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
 
-/***/ "./node_modules/whatwg-fetch/fetch.js":
-/*!********************************************!*\
-  !*** ./node_modules/whatwg-fetch/fetch.js ***!
-  \********************************************/
-/*! no static exports found */
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16,6 +12,7 @@
   (function (self) {
     'use strict';
 
+    debugger;
     if (self.fetch) {
       return;
     }
