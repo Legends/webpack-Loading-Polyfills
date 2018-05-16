@@ -1,8 +1,8 @@
-import 'core-js/es6/promise';
+// import 'core-js/es6/promise';
 
 if(!"Promise" in window){
   require.ensure([], () => {
-    require('promise-polyfill');  
+    require('core-js/es6/promise');  
 
      resolve();
    }, 'Promise');
