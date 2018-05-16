@@ -1,11 +1,19 @@
 import 'core-js/es6/promise';
 
+if(!"Promise" in window){
+  require.ensure([], () => {
+    require('promise-polyfill');  
+
+     resolve();
+   }, 'Promise');
+}
+
 export default (function loadPolyfills() {
   const fillFetch = () => new Promise((resolve) => {
     if ('fetch' in window) return resolve();
 
     require.ensure([], () => {
-      require('whatwg-fetch');
+     require('whatwg-fetch');  
 
       resolve();
     }, 'fetch');

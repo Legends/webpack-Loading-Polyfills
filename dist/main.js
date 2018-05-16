@@ -41,7 +41,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"vendors~core-js":"vendors~core-js","vendors~fetch":"vendors~fetch"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"vendors~Promise":"vendors~Promise","vendors~core-js":"vendors~core-js","vendors~fetch":"vendors~fetch"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -14915,6 +14915,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 __webpack_require__(/*! core-js/es6/promise */ "./node_modules/core-js/es6/promise.js");
+
+if (!"Promise" in window) {
+  __webpack_require__.e(/*! require.ensure | Promise */ "vendors~Promise").then((function () {
+    __webpack_require__(/*! promise-polyfill */ "./node_modules/promise-polyfill/lib/index.js");
+
+    resolve();
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+}
 
 exports.default = function loadPolyfills() {
   var fillFetch = function fillFetch() {
