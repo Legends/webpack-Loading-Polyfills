@@ -14925,13 +14925,14 @@ __webpack_require__(/*! core-js/es6/promise */ "./node_modules/core-js/es6/promi
 // }
 
 exports.default = function loadPolyfills() {
+
   var fillFetch = function fillFetch() {
     return new Promise(function (resolve) {
       if ('fetch' in window) return resolve();
 
       __webpack_require__.e(/*! require.ensure | fetch */ "vendors~fetch").then((function () {
+        debugger;
         __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
-
         resolve();
       }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
     });

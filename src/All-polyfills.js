@@ -9,12 +9,13 @@ import 'core-js/es6/promise';
 // }
 
 export default (function loadPolyfills() {
+
   const fillFetch = () => new Promise((resolve) => {
     if ('fetch' in window) return resolve();
-    
-    require.ensure([], () => {
-     require('whatwg-fetch');  
 
+    require.ensure([], () => {
+      debugger;
+     require('whatwg-fetch');  
       resolve();
     }, 'fetch');
   });
