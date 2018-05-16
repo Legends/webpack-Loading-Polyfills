@@ -26,7 +26,7 @@ try {
     let king = new King("Robert");
     king.says();
     king.promises().then(() => {
-
+        console.log("fetching calling");
         fetch("https://httpbin.org/get")
             .then((result) => {
                 return result.text();
