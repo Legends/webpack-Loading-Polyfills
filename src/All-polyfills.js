@@ -30,7 +30,6 @@ export default function loadPolyfills() {
       resolve();
     }, 'fetch');
   });
-
   
   const fillCoreJs = () => new Promise((resolve) => {
     if (
@@ -50,7 +49,7 @@ export default function loadPolyfills() {
   return Promise.all([
     fillFetch(),  
     fillCoreJs()
-  ]).catch((e)=>{debugger; console.error(e);});
+  ]);
 }
 
 // module.exports = (function test() {

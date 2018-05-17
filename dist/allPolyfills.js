@@ -2403,9 +2403,7 @@ function loadPolyfills() {
     });
   };
 
-  return Promise.all([fillFetch(), fillCoreJs()]).catch(function (e) {
-    debugger;console.error(e);
-  });
+  return Promise.all([fillFetch(), fillCoreJs()]);
 }
 
 // module.exports = (function test() {
