@@ -5,16 +5,12 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require("path");
-debugger;
- 
- 
 
 module.exports = {
-
   // context: path.resolve(__dirname, "./src"),
   devtool: false,
   entry: {
-    polyfill: "./src/All-polyfills.js",
+    allPolyfills: "./src/All-polyfills.js",
     main: [path.resolve(__dirname, "./src/entry.js")] 
   },
   optimization: {
