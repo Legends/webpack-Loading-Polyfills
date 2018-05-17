@@ -8,27 +8,31 @@ import 'core-js/es6/promise';
 //    }, 'Promise');
 // }
 
-function loadScript(url) {
-  return new Promise((resolve, reject) => {
-    var script = document.createElement('script');
-    script.onload = function () {
-      resolve();
-    };
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  });
-}
+// function loadScript(url) {
+//   return new Promise((resolve, reject) => {
+//     var script = document.createElement('script');
+//     script.async = false;
+//     script.onload = function () {
+//       resolve();
+//     };
+//     script.src = url;
+//     document.getElementsByTagName('head')[0].appendChild(script);
+//   });
+// }
 
 export default (function loadPolyfills() {
 
   const fillFetch = () => new Promise((resolve) => {
-
     if ('fetch' in window) return resolve();
 
-    return loadScript(require.resolve('whatwg-fetch'));
-
+    require.ensure([], () => {
+      debugger;
+     require('whatwg-fetch');  
+      resolve();
+    }, 'fetch');
   });
 
+  
   const fillCoreJs = () => new Promise((resolve) => {
     if (
       'startsWith' in String.prototype &&
@@ -38,15 +42,16 @@ export default (function loadPolyfills() {
       'keys' in Object
     ) return resolve();
 
-    return loadScript(require.resolve('core-js'));
+    require.ensure([], () => {
+      require('core-js');
+      resolve();
+    }, 'core-js');
   });
 
   return Promise.all([
-    fillFetch(),
+    fillFetch(),  
     fillCoreJs()
-  ]).catch((e) => {
-    console.error(e);
-  });
+  ]).catch((e)=>{console.error(e);});
 })()
 
 // module.exports = (function test() {
