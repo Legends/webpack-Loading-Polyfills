@@ -20,7 +20,7 @@ import 'core-js/es6/promise';
 //   });
 // }
 
-export default function loadPolyfills() {
+module.exports = function loadPolyfills() {
 
   const fillFetch = () => new Promise((resolve) => {
     if ('fetch' in window) return resolve();

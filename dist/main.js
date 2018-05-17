@@ -14910,11 +14910,6 @@ module.exports = function (module) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = loadPolyfills;
-
 __webpack_require__(/*! core-js/es6/promise */ "./node_modules/core-js/es6/promise.js");
 
 // if(!"Promise" in window){
@@ -14937,7 +14932,7 @@ __webpack_require__(/*! core-js/es6/promise */ "./node_modules/core-js/es6/promi
 //   });
 // }
 
-function loadPolyfills() {
+module.exports = function loadPolyfills() {
 
   var fillFetch = function fillFetch() {
     return new Promise(function (resolve) {
@@ -14962,7 +14957,7 @@ function loadPolyfills() {
   };
 
   return Promise.all([fillFetch(), fillCoreJs()]);
-}
+};
 
 // module.exports = (function test() {
 
@@ -15109,9 +15104,10 @@ module.exports = King;
 "use strict";
 
 
-var poly = __webpack_require__(/*! ./All-polyfills */ "./src/All-polyfills.js");
-
-poly().then(function () {
+var init = __webpack_require__(/*! ./All-polyfills */ "./src/All-polyfills.js").default;
+debugger;
+console.dir(init);
+init().then(function () {
   __webpack_require__(/*! ./app */ "./src/app.js");
 }).catch(function (e) {
   alert(e);

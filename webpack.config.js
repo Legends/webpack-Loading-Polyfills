@@ -10,8 +10,7 @@ module.exports = {
   // context: path.resolve(__dirname, "./src"),
   devtool: false,
   entry: {
-    allPolyfills: "./src/All-polyfills.js",
-    main: [path.resolve(__dirname, "./src/entry.js")] 
+    main: [path.resolve(__dirname, "./src/entry.js")]
   },
   optimization: {
     minimize: false,
