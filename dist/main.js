@@ -12727,7 +12727,7 @@ try {
     var king = new King("Robert");
     king.says();
     king.promises().then(function () {
-        console.log("fetching calling");
+        console.log("fetching calling from entry.js");
         fetch("https://httpbin.org/get").then(function (result) {
             return result.text();
         }).then(function (txt) {
