@@ -41,7 +41,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"vendors~core-js":"vendors~core-js","vendors~fetch":"vendors~fetch"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -14912,46 +14912,24 @@ module.exports = function (module) {
 
 __webpack_require__(/*! core-js/es6/promise */ "./node_modules/core-js/es6/promise.js");
 
-// if(!"Promise" in window){
-//   require.ensure([], () => {
-//     require('core-js/es6/promise');  
-
-//      resolve();
-//    }, 'Promise');
-// }
-
-// function loadScript(url) {
-//   return new Promise((resolve, reject) => {
-//     var script = document.createElement('script');
-//     script.async = false;
-//     script.onload = function () {
-//       resolve();
-//     };
-//     script.src = url;
-//     document.getElementsByTagName('head')[0].appendChild(script);
-//   });
-// }
-
 function loadPolyfills() {
 
   var fillFetch = function fillFetch() {
-    return new Promise(function (resolve) {
-      if ('fetch' in window) return resolve();
+    if ('fetch' in window) return resolve();
 
-      __webpack_require__.e(/*! require.ensure | fetch */ "vendors~fetch").then((function () {
-        __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
-        resolve();
+    return new Promise(function (resolve) {
+      __webpack_require__.e(/*! require.ensure */ 1).then((function (require) {
+        resolve(__webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js"));
       }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
     });
   };
 
   var fillCoreJs = function fillCoreJs() {
-    return new Promise(function (resolve) {
-      if ('startsWith' in String.prototype && 'endsWith' in String.prototype && 'includes' in Array.prototype && 'assign' in Object && 'keys' in Object) return resolve();
+    if ('startsWith' in String.prototype && 'endsWith' in String.prototype && 'includes' in Array.prototype && 'assign' in Object && 'keys' in Object) return resolve();
 
-      __webpack_require__.e(/*! require.ensure | core-js */ "vendors~core-js").then((function () {
-        __webpack_require__(/*! core-js */ "./node_modules/core-js/index.js");
-        resolve();
+    return new Promise(function (resolve) {
+      __webpack_require__.e(/*! require.ensure */ 0).then((function (require) {
+        resolve(__webpack_require__(/*! core-js */ "./node_modules/core-js/index.js"));
       }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
     });
   };
@@ -15106,10 +15084,9 @@ module.exports = King;
 "use strict";
 
 
-var init = __webpack_require__(/*! ./All-polyfills */ "./src/All-polyfills.js");
-debugger;
-console.dir(init);
-init().then(function () {
+var patching = __webpack_require__(/*! ./All-polyfills */ "./src/All-polyfills.js");
+
+patching().then(function () {
   __webpack_require__(/*! ./app */ "./src/app.js");
 }).catch(function (e) {
   alert(e);
