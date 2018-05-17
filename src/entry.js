@@ -1,6 +1,5 @@
-var init = require("./All-polyfills");
-debugger;
-console.dir(init)
-init()
+var patching = require("./All-polyfills");
+
+patching()
 .then(()=>{require("./app")})
 .catch((e)=>{alert(e);})
