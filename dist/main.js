@@ -14932,7 +14932,7 @@ __webpack_require__(/*! core-js/es6/promise */ "./node_modules/core-js/es6/promi
 //   });
 // }
 
-module.exports = function loadPolyfills() {
+function loadPolyfills() {
 
   var fillFetch = function fillFetch() {
     return new Promise(function (resolve) {
@@ -14957,7 +14957,9 @@ module.exports = function loadPolyfills() {
   };
 
   return Promise.all([fillFetch(), fillCoreJs()]);
-};
+}
+
+module.exports = loadPolyfills;
 
 // module.exports = (function test() {
 
