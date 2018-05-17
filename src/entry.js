@@ -1,4 +1,4 @@
-var init = require("./All-polyfills").default;
+var init = require("./All-polyfills");
 debugger;
 console.dir(init)
 init()

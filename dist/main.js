@@ -15106,7 +15106,7 @@ module.exports = King;
 "use strict";
 
 
-var init = __webpack_require__(/*! ./All-polyfills */ "./src/All-polyfills.js").default;
+var init = __webpack_require__(/*! ./All-polyfills */ "./src/All-polyfills.js");
 debugger;
 console.dir(init);
 init().then(function () {
