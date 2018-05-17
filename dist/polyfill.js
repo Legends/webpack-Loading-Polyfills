@@ -2384,9 +2384,7 @@ exports.default = function loadPolyfills() {
     return new Promise(function (resolve) {
       if ('fetch' in window) return resolve();
 
-      debugger;
       __webpack_require__.e(/*! require.ensure | fetch */ "vendors~fetch").then((function () {
-        debugger;
         __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
         resolve();
       }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);

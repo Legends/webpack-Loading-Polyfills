@@ -24,10 +24,8 @@ export default (function loadPolyfills() {
 
   const fillFetch = () => new Promise((resolve) => {
     if ('fetch' in window) return resolve();
-
-    debugger;
-    require.ensure([], () => {
-      debugger;
+    
+    require.ensure([], () => {      
      require('whatwg-fetch');  
       resolve();
     }, 'fetch');
