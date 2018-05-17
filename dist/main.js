@@ -41,7 +41,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"vendors~core-js":"vendors~core-js","vendors~fetch":"vendors~fetch"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -14928,13 +14928,16 @@ exports.default = function loadPolyfills() {
 
   var fillFetch = function fillFetch() {
     return new Promise(function (resolve) {
+
       if ('fetch' in window) return resolve();
 
-      __webpack_require__.e(/*! require.ensure | fetch */ "vendors~fetch").then((function () {
-        debugger;
-        __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
+      new Promise(function (resolve) {
+        __webpack_require__.e(/*! require.ensure */ 1).then((function (require) {
+          resolve(__webpack_require__( /* webpackChunkName: "whatwg-fetch" *//*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js"));
+        }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+      }).then(function () {
         resolve();
-      }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+      });
     });
   };
 
@@ -14942,10 +14945,13 @@ exports.default = function loadPolyfills() {
     return new Promise(function (resolve) {
       if ('startsWith' in String.prototype && 'endsWith' in String.prototype && 'includes' in Array.prototype && 'assign' in Object && 'keys' in Object) return resolve();
 
-      __webpack_require__.e(/*! require.ensure | core-js */ "vendors~core-js").then((function () {
-        __webpack_require__(/*! core-js */ "./node_modules/core-js/index.js");
+      new Promise(function (resolve) {
+        __webpack_require__.e(/*! require.ensure */ 0).then((function (require) {
+          resolve(__webpack_require__( /* webpackChunkName: "core-js" *//*! core-js */ "./node_modules/core-js/index.js"));
+        }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+      }).then(function () {
         resolve();
-      }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+      });
     });
   };
 

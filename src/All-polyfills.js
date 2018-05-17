@@ -11,16 +11,16 @@ import 'core-js/es6/promise';
 export default (function loadPolyfills() {
 
   const fillFetch = () => new Promise((resolve) => {
+
     if ('fetch' in window) return resolve();
 
-    require.ensure([], () => {
-      debugger;
-     require('whatwg-fetch');  
+     import(/* webpackChunkName: "whatwg-fetch" */'whatwg-fetch').then(() => {
       resolve();
-    }, 'fetch');
+    });
+
   });
 
-  
+
   const fillCoreJs = () => new Promise((resolve) => {
     if (
       'startsWith' in String.prototype &&
@@ -30,16 +30,17 @@ export default (function loadPolyfills() {
       'keys' in Object
     ) return resolve();
 
-    require.ensure([], () => {
-      require('core-js');
+     import(/* webpackChunkName: "core-js" */'core-js').then(() => {
       resolve();
-    }, 'core-js');
+    });
   });
 
   return Promise.all([
-    fillFetch(),  
+    fillFetch(),
     fillCoreJs()
-  ]).catch((e)=>{console.error(e);});
+  ]).catch((e) => {
+    console.error(e);
+  });
 })()
 
 // module.exports = (function test() {
@@ -59,4 +60,3 @@ export default (function loadPolyfills() {
 //     }
 //  return {};
 // })()
-
