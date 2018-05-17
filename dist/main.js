@@ -14915,7 +14915,7 @@ __webpack_require__(/*! core-js/es6/promise */ "./node_modules/core-js/es6/promi
 function loadPolyfills() {
 
   var fillFetch = function fillFetch() {
-    if ('fetch' in window) return resolve();
+    if ('fetch' in window) return Promise.resolve();
 
     return new Promise(function (resolve) {
       __webpack_require__.e(/*! require.ensure */ 1).then((function (require) {
@@ -14925,7 +14925,7 @@ function loadPolyfills() {
   };
 
   var fillCoreJs = function fillCoreJs() {
-    if ('startsWith' in String.prototype && 'endsWith' in String.prototype && 'includes' in Array.prototype && 'assign' in Object && 'keys' in Object) return resolve();
+    if ('startsWith' in String.prototype && 'endsWith' in String.prototype && 'includes' in Array.prototype && 'assign' in Object && 'keys' in Object) return Promise.resolve();
 
     return new Promise(function (resolve) {
       __webpack_require__.e(/*! require.ensure */ 0).then((function (require) {

@@ -3,7 +3,7 @@ import 'core-js/es6/promise';
 function loadPolyfills() {
 
   const fillFetch = () => {
-    if ('fetch' in window) return resolve();    
+    if ('fetch' in window) return Promise.resolve();    
         
      return import('whatwg-fetch');       
   };
@@ -15,7 +15,7 @@ function loadPolyfills() {
       'includes' in Array.prototype &&
       'assign' in Object &&
       'keys' in Object
-    ) return resolve();
+    ) return Promise.resolve();
   
       return import('core-js');    
   };
